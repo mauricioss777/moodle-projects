@@ -1,0 +1,145 @@
+#page-local-pages-googleforeducation #page-header {
+    display: none;
+}
+
+#page-local-pages-googleforeducation #page-content {
+    padding-top: calc(1.0715rem + 20px) !important;
+    padding-bottom: 20px !important;
+}
+
+#page-local-pages-googleforeducation #page > .container {
+    max-width: unset;
+}
+
+#page-local-pages-googleforeducation .google-products {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+#page-local-pages-googleforeducation .google-products .col-sm-6 {
+    padding: 1.0715rem;
+}
+
+#page-local-pages-googleforeducation .google-product {
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#page-local-pages-googleforeducation .google-product .description {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+#page-local-pages-googleforeducation .google-product img {
+    display: block;
+    margin: 1.5rem auto 0 auto;
+}
+
+#page-local-pages-minhabiblioteca iframe {
+    width: 100%;
+    height: calc(100vh - 66px);
+}
+
+#page-local-pages-minhabiblioteca #page-header,
+#page-local-pages-minhabiblioteca #maincontent {
+    display: none;
+}
+
+#page-local-pages-minhabiblioteca .page-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+#page-local-pages-minhabiblioteca #page-content {
+    padding-bottom: 0 !important;
+}
+
+#page-local-pages-minhabiblioteca #region-main {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+#page-local-pages-minhabiblioteca #page > .container {
+    padding: 0;
+    max-width: unset;
+}
+
+/* Destaques do materiais */
+
+.destaque {
+    border: 4px solid #8e66e5;
+    border-radius: 20px;
+    margin-top: 2.6rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    position: relative;
+    text-align: justify;
+}
+
+.destaque:after {
+    color: #8e66e5;
+    position: absolute;
+    top: -20px;
+    left: 64px;
+    font-weight: 800;
+    font-size: 1.6rem;
+    background-color: #fff;
+    padding-right: 1rem;
+}
+
+.destaque:before {
+    font-family: "Fontello";
+    line-height: 1;
+    color: #8e66e5;
+    float: left;
+    width: 70px;
+    height: 70px;
+    font-size: 60px;
+    overflow: hidden;
+    background-color: #fff;
+    margin-top: -50px;
+    margin-left: -20px;
+    text-align: center;
+    padding: 5px;
+}
+
+.destaque.saiba-mais:after { content: "Para saber mais";}
+.destaque.saiba-mais:before { content: '\e816'; }
+
+.destaque.desafio:after { content: "Desafio";}
+.destaque.desafio:before { content: '\e813'; }
+
+.destaque.conceito:after { content: "Conceito";}
+.destaque.conceito:before { content: '\e819'; }
+
+.destaque.atividade:after { content: "Atividade";}
+.destaque.atividade:before { content: '\e814';}
+
+.destaque.dica-livro:after { content: "Dica de livro";}
+.destaque.dica-livro:before { content: '\e81a';}
+
+.destaque.dica-de-leitura:after { content: "Dica de leitura";}
+.destaque.dica-de-leitura:before { content: '\e808';    font-size: 65px;}
+
+.destaque.dica-site:after { content: "Dica de site";}
+.destaque.dica-site:before { content: '\e817';}
+
+.destaque.dica-filme:after { content: "Dica de filme";}
+.destaque.dica-filme:before { content: '\e80c';}
+
+.destaque.dica-video:after { content: "Dica de vídeo";}
+.destaque.dica-video:before { content: '\e80b';}
+
+.destaque.lembre-se:after { content: "Lembre-se";}
+.destaque.lembre-se:before { content: '\e80d';}
+
+.destaque.para-pensar:after { content: "Para pensar";}
+.destaque.para-pensar:before { content: '\e815';    font-size: 49px;    margin-top: -44px;    height: 65px; }

@@ -1,0 +1,72 @@
+#page-mod-presentation-index .slide,
+.modtype_presentation .slide
+{
+    display: none;
+}
+
+#page-mod-presentation-index .slide.active,
+.modtype_presentation .slide.active
+{
+    display: block;
+}
+
+#page-mod-presentation-index img,
+.modtype_presentation img
+{
+    width: 100%;
+}
+
+#page-mod-presentation-index .slides:fullscreen img,
+.modtype_presentation .slides:fullscreen img
+{
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+#page-mod-presentation-index .controls,
+.modtype_presentation .controls
+{
+    margin-top: 15px;
+}
+
+.modtype_presentation .slide
+{
+    min-height: 500px;
+}
+
+#page-mod-presentation-index .slide
+{
+    min-height: 600px;
+}
+
+#page-mod-presentation-index .video-container,
+.modtype_presentation .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.modtype_presentation .video-container iframe,
+.modtype_presentation .video-container object,
+.modtype_presentation .video-container embed,
+.modtype_presentation .video-container video,
+.modtype_presentation .video-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#page-mod-presentation-index .video-container iframe,
+#page-mod-presentation-index .video-container object,
+#page-mod-presentation-index .video-container embed,
+#page-mod-presentation-index .video-container video,
+#page-mod-presentation-index .video-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

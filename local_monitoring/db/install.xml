@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="local/monitoring/db" VERSION="20141021" COMMENT="XMLDB file for Moodle local/monitoring">
+    <TABLES>
+      <TABLE NAME="local_monitoring_sessions" COMMENT="">
+        <FIELDS>
+            <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+            <FIELD NAME="sessionid" TYPE="int" LENGTH="10" NOTNULL="true" />
+            <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" />
+            <FIELD NAME="timestart" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" />
+            <FIELD NAME="timeend" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" />
+            <FIELD NAME="hits" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="1" />
+        </FIELDS>
+        <KEYS>
+            <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            <KEY NAME="unique" TYPE="unique" FIELDS="sessionid"/>
+        </KEYS>
+        <INDEXES>
+            <INDEX NAME="userid" UNIQUE="false" FIELDS="userid"/>
+        </INDEXES>
+      </TABLE>
+      <TABLE NAME="local_monitoring_user" COMMENT="">
+        <FIELDS>
+            <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+            <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" />
+        </FIELDS>
+        <KEYS>
+            <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+    </TABLES>
+  </XMLDB>

@@ -1,0 +1,28 @@
+{
+    "allowusers": [
+      {
+        "id": 2,
+        "name": "Mabel",
+        "ip": "192.168.0.100",
+        "origin": "univates"
+      },
+      {
+        "id": 234,
+        "name": "Paula",
+        "ip": "192.168.0.101",
+        "origin": "univates"
+      },
+      {
+        "id": 456,
+        "name": "Douglas",
+        "ip": "192.168.0.101",
+        "origin": "univates"
+      },
+      {
+        "id": 789,
+        "name": "Artur",
+        "ip": "192.168.0.102",
+        "origin": "univates"
+      }
+    ]
+  }

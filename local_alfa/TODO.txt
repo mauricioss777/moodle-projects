@@ -1,0 +1,1 @@
+- Implementar a função de backup das tabelas do mdl_local_alfa(não sei se é necessário) https://docs.moodle.org/dev/Backup_2.0_for_developers

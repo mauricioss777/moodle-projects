@@ -1,0 +1,24 @@
+<div class="row mb-15">
+    <div class="col-sm-12 col-md-12">
+        <div class="bg-white py-30 px-30 rounded">
+            <img src="{{ logo.googleforeducation }}" alt="Google for education logo" style="max-width: 100%; width: 300px; margin: 0 auto 10px auto; display: block;">
+            <p class="mb-0 text-justify">{{#str}}gfedescription, local_pages{{/str}}</p>
+        </div>
+    </div>
+</div>
+<div class="row google-products">
+    {{# products }}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="google-product">
+                <div class="description">
+                    <img src="{{ logo }}" alt="Google {{ name }}" class="d-block m-0-auto m-t-4">
+                    <span class="font-size-16 d-block">{{ name }}</span>
+                    <p class="font-size-12 m-t-3 m-b-0">{{ description }}</p>
+                </div>
+                <a href="{{ link }}" target="_blank" class="btn btn-info btn-block p-10 border-0 rounded-0 text-white font-weight-800">
+                    <p class="mb-0">{{#str}}access, local_pages{{/str}}</p>
+                </a>
+            </div>
+        </div>
+    {{/ products }}
+</div>

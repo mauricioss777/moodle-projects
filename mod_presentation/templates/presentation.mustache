@@ -1,0 +1,26 @@
+<div id="presentation-{{id}}" class="holder">
+    <div class="slides">
+        {{#urls}}
+            <div class="slide" data-url="{{ . }}">
+                <img class="" src=""/>
+            </div>
+        {{/urls}}
+    </div>
+    <div class="controls pull-right">
+        <button class="btn btn-sm text-nowrap prev-slide">
+            <i class="icon fa fa-chevron-left fa-fw"></i>
+        </button>
+        <span> <span class="current-slide"> 1 </span> / <span class="total-slides"> 20 </span>
+        <button class="btn btn-sm text-nowrap next-slide">
+            <i class="icon fa fa-chevron-right fa-fw"></i>
+        </button>
+        <button class="btn btn-sm text-nowrap fullscreen">
+            <i class="icon fa fa-window-maximize fa-fw"></i>
+        </button>
+        {{#download}}
+        <a class="btn btn-sm text-nowrap download" href="{{.}}" target="_blank">
+            <i class="icon fa fa-download fa-fw"></i>
+        </a>
+        {{/download}}
+    </div>
+</div>

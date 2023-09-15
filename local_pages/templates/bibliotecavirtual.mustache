@@ -1,0 +1,9 @@
+<form action="//univates.bvirtual.com.br/user_session/authentication_gateway" method="post" target="bibliotecavirtualframe" id="bibliotecavirtualform">
+    <input type="hidden" name="login" value="{{ login }}">
+    <input type="hidden" name="isbn" value="">
+    <input type="hidden" name="token" value="{{ token }}">
+</form>
+<iframe name="bibliotecavirtualframe" frameborder="0">No iframe</iframe>
+{{#js}}
+    $('#bibliotecavirtualform').submit();
+{{/js}}

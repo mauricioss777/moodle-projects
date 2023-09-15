@@ -1,0 +1,22 @@
+<script src='fullcalendar.min.js'></script>
+<link href='fullcalendar.min.css' rel='stylesheet' />
+
+<!--<input type='text' id='tutor' /><button onclick='loadCalendar()'>Buscar</button>
+<div id='calendar'></div> -->
+
+<div class='row'>
+    <div class="col-3" style='text-align:center;'>
+        <img src='https://www.univates.br/virtual/pluginfile.php/{{usercontext}}/user/icon/remui/f3?rev=1' />
+    </div>
+    <div class="col-9">
+        <h1> {{username}} </h1>
+        <h2> {{course}} </h2>
+    </div>
+</div>
+
+<div class='row'{{userid}}>
+
+    
+</div>
+
+<script src='script.js'></script>

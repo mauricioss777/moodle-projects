@@ -1,0 +1,156 @@
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Language File for Meet
+ *
+ * @package   mod_meet
+ * @copyright 2020 onwards, Univates
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author    Christian Bayer  (christian.bayer@universo.univates.br)
+ */
+
+defined('MOODLE_INTERNAL') || die();
+
+// Basic
+$string['pluginname'] = 'Meet';
+$string['pluginadministration'] = 'Meet administration';
+$string['modulename'] = 'Meet';
+$string['modulenameplural'] = 'Meet';
+$string['modulename_link'] = 'mod/meet/view';
+$string['modulename_help'] = 'Google Meet makes it easy to start a secure video meeting. Join from any modern web browser or download the app, and you\'re ready to go.';
+
+// Settings
+$string['settings_heading_google_api'] = 'Google Calendar API';
+$string['settings_heading_google_api_description'] = 'This section configures the Google API and Google Service Account Credentials';
+$string['settings_heading_google_recordings'] = 'Recordings';
+$string['settings_heading_google_recordings_description'] = 'This section configures the recordings fetch';
+$string['settings_credentials'] = 'Credentials file (.json)';
+$string['settings_credentials_description'] = 'The JSON file with the Google Service Account credentials data';
+$string['settings_calendar_owner'] = 'Calendar Owner E-mail';
+$string['settings_calendar_owner_description'] = 'The Google Calendar owner e-mail that will be used to create the events';
+$string['settings_calendar_id'] = 'Calendar ID';
+$string['settings_calendar_id_description'] = 'The Google Calendar ID that will be used to create the events. Needs to be created with the owner e-mail';
+$string['settings_enable_reports'] = 'Enable reports';
+$string['settings_enable_reports_description'] = 'Whether the Meet Reports will be displayed or no. Note: this setting requires reporting privileges for the given G Suite account (e.g., admin account).';
+$string['settings_recordings_fetch'] = 'Recordings fetch time';
+$string['settings_recordings_fetch_description'] = 'Recordings are fetched each time that an instance is viewed. This setting defines how long after the meeting end they will still be fetched. Default is 7 days';
+$string['settings_recordings_cache'] = 'Recordings cache time';
+$string['settings_recordings_cache_description'] = 'Recordings are fetched each time that an instance is viewed. This setting defines the cache time for this fetch. Default is 2 hours';
+
+// Form general
+$string['form_block_general'] = 'General';
+$string['form_field_name'] = 'Name';
+$string['form_field_intro'] = 'Description';
+$string['form_field_timestart'] = 'Starts at';
+$string['form_field_timestart_help'] = 'Start date and time of the conference';
+$string['form_field_timeend'] = 'Ends at';
+$string['form_field_timeend_help'] = 'End date and time of the conference';
+$string['form_field_notify'] = 'Notify participants';
+$string['form_field_notify_help'] = 'If checked, all participants will be notified of changes to this event by email';
+$string['form_field_addcoursename'] = 'Add course name in Calendar event';
+$string['form_field_addcoursename_help'] = 'If checked, the course name will be added in the title of the event in Google Calendar';
+$string['form_field_description'] = 'Description';
+$string['form_field_visible'] = 'Visible';
+
+// Form reminders
+$string['form_block_reminders'] = 'Reminders';
+$string['form_label_reminder_count'] = 'Reminder {no}';
+$string['form_label_reminder_count_help'] = 'Set a reminder for the participants';
+$string['form_field_reminder_option_email'] = 'E-mail';
+$string['form_field_reminder_option_popup'] = 'Notification';
+$string['form_field_reminder_option_minutes'] = 'Minutes';
+$string['form_field_reminder_option_hours'] = 'Hours';
+$string['form_field_reminder_option_days'] = 'Days';
+$string['form_button_add_reminder'] = 'Add reminder';
+
+// Course module
+$string['join'] = 'Join';
+$string['recordings'] = 'Recordings';
+$string['play'] = 'Play';
+$string['open_in_drive'] = 'Open in Drive';
+$string['broken_recording'] = 'This recording seems to be broken and will not be shown to students';
+$string['name'] = 'Name';
+$string['description'] = 'Description';
+$string['email'] = 'E-mail';
+$string['joined_at'] = 'Joined at';
+$string['left_at'] = 'Left at';
+$string['call_duration'] = 'Call duration';
+$string['video_duration'] = 'Video duration';
+$string['viewers'] = 'Viewers';
+$string['page_size'] = 'Page size';
+$string['fields'] = 'Fields';
+$string['thumbnail'] = 'Thumbnail';
+$string['date'] = 'Date';
+$string['duration'] = 'Duration';
+$string['actions'] = 'Actions';
+$string['unavailable'] = 'Unavailable';
+$string['delete_recording'] = 'Delete recording "{$a}"';
+$string['edit_recording'] = 'Edit recording "{$a}"';
+$string['editing_recording'] = 'Editing recording';
+$string['hide_recording'] = 'Hide recording "{$a}"';
+$string['show_recording'] = 'Show recording "{$a}"';
+$string['recording_deleted'] = 'Recording "{$a->title}" was deleted';
+$string['no_recordings'] = 'There are no recording to show.';
+$string['error_recording_not_found'] = 'The recording was not found.';
+$string['update_recordings'] = 'Update recordings';
+$string['update_recordings_help'] = 'The recordings are automatically fetched, but if something got wrong or they are taking too long to update, you can do it manually.';
+$string['meeting_room_not_available'] = 'This meeting room is not available yet.';
+$string['meeting_room_available'] = 'The meeting room is ready.';
+$string['meeting_room_closed'] = 'This meeting room is closed.';
+$string['meeting_room_see_recordings'] = 'You can see the recordings below (not always available).';
+$string['meeting_room_forbidden'] = 'You cannot join to this meeting room.';
+$string['copy_link'] = 'Copy link';
+$string['link_copied'] = 'Link copied';
+$string['chat_log'] = 'Chat Log';
+$string['cookie_warning'] = 'Seu navegador poderá ter problemas ao reproduzir a gravação. Os possíveis motivos são: A opção de bloqueio para cookies de terceiros está ativada; Seu navegador está com opções muito restritivas de privacidade; Um AdBlocker está ativo.';
+$string['aditional_files'] = 'Arquivos Adicionais';
+
+// Capabilities
+$string['meet:addinstance'] = 'Add a new Meet activity';
+$string['meet:view'] = 'View a Meet activity';
+$string['meet:join'] = 'Join a meeting on a Meet activity';
+$string['meet:playrecordings'] = 'Play a meeting record on a Meet activity';
+$string['meet:managerecordings'] = 'Manage Meet recordings';
+
+// Events
+$string['event_meeting_joined'] = 'Joined the meeting';
+$string['event_recording_played'] = 'Recording played';
+$string['event_recording_updated'] = 'Recording updated';
+$string['event_recording_deleted'] = 'Recording deleted';
+$string['event_recording_fetched'] = 'Recording fetched';
+$string['event_report_viewed'] = 'Report viewed';
+
+// Errors
+$string['invalid_access'] = 'Invalid access.';
+$string['invalid_report'] = 'Invalid report.';
+$string['reports_disabled'] = 'The reports are disabled.';
+
+// Reports
+$string['report'] = 'Report';
+$string['reports'] = 'Reports';
+$string['report_mode_overview'] = 'Overview';
+$string['report_mode_attendance'] = 'Attendance List';
+$string['report_block_report_includes'] = 'What to include in the report';
+$string['report_block_report_display'] = 'Display options';
+$string['report_viewers_option_all'] = 'All viewers';
+$string['report_viewers_option_enrolled'] = 'Only enrolled users';
+$string['report_viewers_option_not_enrolled'] = 'Only not enrolled users';
+$string['update_report'] = 'Update report';
+
+// Tasks
+$string['revalidate_permissions'] = 'Revalidate meet permissions';
+$string['load_presences_from_meet'] = 'Load presences from Google Meet';

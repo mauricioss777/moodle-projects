@@ -1,0 +1,35 @@
+<div id="presentation-{{id}}" class="holder">
+    <div class="slides">
+        {{#urls}}
+            <div class="slide" data-url="{{ . }}" style="display: grid;">
+                <img class="" src="" style="grid-area: 1 / 1;"/>
+                <div class="video-container" data-cmid="{{id}}">
+                    <div class="video-target">
+                        <iframe src="https://www.youtube.com/embed/00PlKWhATHs" class="embed-responsive-item" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen=""></iframe>
+                    </div>
+                </div>
+                <div class="overlay" style="grid-area: 1 / 5; background-color: black; padding: 2em;">
+                    <a href="https://www.youtube.com/embed/00PlKWhATHs">https://www.youtube.com/embed/00PlKWhATHs</a>
+                    <a href="https://www.youtube.com/embed/00PlKWhATHs">https://www.youtube.com/embed/00PlKWhATHs</a>
+                </div>
+            </div>
+        {{/urls}}
+    </div>
+    <div class="controls pull-right">
+        <button class="btn btn-sm text-nowrap fullscreen">
+            <i class="icon fa fa-chevron-left fa-fw"></i>
+        </button>
+        <span> <span class="current-slide"> 1 </span> / <span class="total-slides"> 20 </span>
+        <button class="btn btn-sm text-nowrap next-slide">
+            <i class="icon fa fa-chevron-right fa-fw"></i>
+        </button>
+        <button class="btn btn-sm text-nowrap fullscreen">
+            <i class="icon fa fa-window-maximize fa-fw"></i>
+        </button>
+        <button class="btn btn-sm text-nowrap prev-slide">
+            <i class="icon fa fa-download fa-fw"></i>
+        </button>
+    </div>
+</div>
