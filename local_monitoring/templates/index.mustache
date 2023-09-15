@@ -1,0 +1,144 @@
+<script src='fullcalendar.min.js'></script>
+<link href='fullcalendar.min.css' rel='stylesheet' />
+
+<div class='row'>
+    <div class="col-3" style='text-align:center;'>
+        <img style='width:50%;' src='https://www.univates.br/virtual/pluginfile.php/{{usercontext}}/user/icon/remui/f3?rev=1' />
+    </div>
+    <div class="col-9">
+        <h1> {{name}} </h1>
+        <h2> {{course}} </h2>
+        <h3> {{{lastacess}}} </h3>
+    </div>
+</div>
+
+<div class='mform'>
+
+    <div id='cal' class='clearfix collapsible collapsed' style='margin-top: 60px;'>
+        <legend class="ftoggler"> <a  class="fheader acesso" role="button" aria-controls="id_general" aria-expanded="false">Acesso</a></legend>
+        <div class="fcontainer clearfix">
+            <div id='calendar' class='{{username}}'></div>
+        </div>
+    </div>
+    <div id='fin' class='clearfix collapsible collapsed' style='margin-top: 15px; margin-bottom:15px;'>
+        <legend class="ftoggler"> <a class="fheader financeiro" role="button" aria-controls="id_general" aria-expanded="false"> Financeiro </a></legend>
+        <div class="fcontainer clearfix">
+            <div id='financeiro' class='{{username}}'> </div>
+        </div>
+    </div>
+    {{#componentes}}
+        <div class='clearfix collapsible collapsed' data-selected="{{selected}}">
+            <legend class="ftoggler"> <a class="fheader" data-user="{{userid}}" data-course="{{id}}"> {{fullname}}</a></legend>
+            <div class="fcontainer clearfix"></div>
+        </div>
+    {{/componentes}}
+
+</div>
+
+<script src='script.js'></script>
+
+<style>
+    .modal-dialog{ min-width: 70% !important; }
+    .row-list:hover{ background-color: #666; }
+    #financeiro table { margin-top: 15px; text-align: center; }
+</style>
+
+{{#js}}
+
+    require(['jquery', 'core/templates', 'core/modal_factory'], function($, Templates, ModalFactory){
+
+        function buildTemplate(data, el){
+            Templates.render('local_monitoring/course', data)
+            .then(function(html, js) {
+                Templates.appendNodeContents(el, html, js);
+            }).fail(function(ex) {
+                console.log(ex);
+            });
+        }
+
+        function ajaxCall(adress, params = {}, method = "POST", el){
+            $.ajax({
+                method: method,
+                url: adress,
+                data: params
+            })
+            .done(function( msg ) {
+                buildTemplate(msg, el);
+            })
+            .fail(function(msg){
+                //error
+            });
+        }
+
+        $('.mform a').on('click', function(){
+            let element = $(this).parent().parent();
+
+            $(element).toggleClass('collapsed');
+
+            if( $(element).hasClass('loaded') ){ return; }
+            if( $(element).attr('id') == 'cal' ){ return; }
+            if( $(element).attr('id') == 'fin' ){ return; }
+
+            ajaxCall('ajax.php', {
+                        'method' : 'course',
+                        'user'   : $(this).data('user'),
+                        'course' : $(this).data('course')
+                        },
+                        'POST',  $(element).find('div') );
+            $(element).addClass('loaded');
+        });
+        
+        // Open the callendar pannel. This case is special
+        $('.acesso').on('click', function(){
+            loadCalendar();
+        });
+
+        // Open the callendar pannel. This case is special
+        $('.financeiro').on('click', function(){
+            loadBallance();
+        });
+
+        //Open pannel if there is a GET param for course
+        $('.collapsible').each(function(){
+            if($(this).data('selected') == 1){
+                $(this).find('a').click();
+            }
+        });
+
+        //Iframe on pannel on a modal
+        $('.fcontainer').on('click', 'a', function(e){
+            e.preventDefault();
+
+            link = $(e.currentTarget).attr('href');
+
+            if(link == ''){ e.preventDefault(); } 
+
+            ModalFactory.create({
+                title: 'Relatório',
+                body: Templates.render( 'local_monitoring/modal', {'link' : link} ),
+            })
+            .done(function(modal) {
+                modal.show();
+            });
+        });
+
+        function loadBallance(){
+            $.ajax({
+                method: 'POST',
+                url: 'ajax.php',
+                data: {
+                    'method' : 'fin',
+                    'user':$('#financeiro').attr('class') 
+                }
+            })
+            .done(function( msg ) {
+                $('#financeiro').html( msg )
+            })
+            .fail(function(msg){
+                $('#financeiro').html( msg.responseText )
+            });
+        }
+
+    });
+{{/js}}
+

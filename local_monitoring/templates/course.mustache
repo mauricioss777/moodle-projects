@@ -1,0 +1,21 @@
+<div class="progress">
+    <div class="progress" style='width: 100%;'>
+        {{{grade}}}
+    </div>
+</div>
+
+<div style='text-align:center' >
+    <h3>{{data}}</h3>
+    <div>
+        <a href='{{full}}' >Relatório completo</a>
+    </div>
+</div>
+
+{{#activities}}
+    <div class='row row-list' data-selected="{{selected}}">
+        <div class='col-1 {{status}}'> </div>
+        <div class='col-6'> <a href='{{link}}' > {{name}} </a> </div>
+        <div class='col-2'> {{userdata}} </div>
+        <div class='col-3'> {{grade}} </div>
+    </div>
+{{/activities}}

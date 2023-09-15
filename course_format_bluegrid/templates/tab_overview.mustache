@@ -1,0 +1,132 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+<li class="tab-pane" id="overview">
+    <div class="row presentation-course">
+        <div class="col-12">
+            <div class="panel summary">
+                <div class="panel-body">
+                    <div class="row">
+                        {{#completionenabled}}
+                        <div class="col-12 mb-5">
+                            <div class="counter">
+                                <h3 class="counter-label">{{#str}}completedactivities, format_bluegrid{{/str}} {{courseprogress}}% </h3>
+    	                        <div class="progress">
+    	                            <div class="progress-bar" role="progressbar" aria-valuenow="{{courseprogress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{courseprogress}}%;" >
+    	                          </div>
+    	                        </div>
+    	                    </div>
+                        </div>
+                        {{/completionenabled}}
+                        <div class="{{#team}} col-md-8 {{/team}} col-12">
+                            <h3 class="summary-title">{{#str}}coursesummarytitle, format_bluegrid{{/str}}</h3>
+                            {{#coursepresentationvideo}}
+                            <div class="panel presentation-video">
+                                <div class="panel-body">
+                                    <div class="video-container">
+                                        <iframe src="{{coursepresentationvideo}}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/coursepresentationvideo}}
+                            {{{coursesummary}}}
+                            {{#teachingplan}}
+                                <a href="{{{teachingplan}}}" target="_blank" class="btn btn-primary d-block mt-10">{{#str}}viewteachingplan, format_bluegrid{{/str}}</a>
+                            {{/teachingplan}}
+                        </div>
+
+                        <div class="presentation-team {{#team}} col-md-4 col-12 {{/team}}">
+                            {{#team}}
+                            <div class="hidden" style='width: 100%;' >
+                                <div class="panel presentation-team-member">
+                                    <div class="panel-body">
+                                        <div>
+                                            <div class="pull-left"> <span class='prev-member'> {{>format_bluegrid/left_arrow}} </span> </div>
+                                            <div class="pull-right"> <span class='next-member'> {{>format_bluegrid/right_arrow}} </span>  </div>
+                                        </div>
+                                        <a href="{{url}}">
+                                            <img src="{{picture}}" alt="{{picture_alt}}" title="{{picture_alt}}">
+                                            <h4 class="member-name">{{fullname}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="panel-footer">
+                                        {{rolename}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/team}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{#section_zero}}
+                                {{{sectionactivities}}}
+                            {{/section_zero}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+{{#js}}
+
+    require(['jquery'], function ($) {
+        var ammount = $('.presentation-team-member').length;
+        //ammount = 1;
+        var selected = 1;
+
+        if(ammount < 2){
+            $('.prev-member').each(function(i, j){ $(j).parent().addClass('hidden') });
+            $('.next-member').each(function(i, j){ $(j).parent().addClass('hidden') });
+        }
+
+        $('.next-member').on('click', function(){
+            selected++;
+            if(selected > ammount){ selected = 1; }
+            refreshMembers();
+        });
+
+        $('.prev-member').on('click', function(){
+            selected--;
+            if(selected < 1){ selected = ammount; }
+            refreshMembers();
+        });
+
+        function refreshMembers(){
+            $('.presentation-team > div').each(function(i, j){
+                $(this).addClass('hidden');
+                if( i + 1 == selected){ $(this).removeClass('hidden'); }
+            });
+        }
+
+        refreshMembers();
+    });
+
+    require(['format_bluegrid/jquery-asPieProgress'], function(){
+        jQuery('.pie-progress').asPieProgress({
+            namespace: 'pie-progress',
+            speed: 30,
+            classes: {
+                svg: 'pie-progress-svg',
+                element: 'pie-progress',
+                number: 'pie-progress-number',
+                content: 'pie-progress-content'
+            }
+        });
+    });
+{{/js}}

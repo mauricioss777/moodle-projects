@@ -1,0 +1,56 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+<li class="section main tab-pane {{#hiddenmessage}}hidden{{/hiddenmessage}}" id="section-{{index}}">
+    <div class="panel">
+        <div class="panel-body content">
+            {{^singlesection}}
+                <span class="section-number {{#hidden}}text-muted{{/hidden}}{{^hidden}}text-brand{{/hidden}}">
+                    {{name}}
+                </span>
+            {{/singlesection}}
+            <div class="section_availability">{{{hiddenmessage}}}</div>
+            <span class="hidden sectionname">{{{title}}}</span>
+            {{#editing}}
+                <div class="right side float-right">{{{optionmenu}}}</div>
+            {{/editing}}
+            <h2 class="section-title">{{{title}}}</h2>
+            <div class="summary">{{{summary}}}</div>
+            {{{sectionactivities}}}
+        </div>
+    </div>
+    {{^singlesection}}
+        <div class="inside-course-navigation">
+            {{#previous}}
+                <a href="#section-{{previous}}" class="btn {{#previousishidden}}btn-outline-default {{/previousishidden}}{{^previousishidden}}btn-outline-primary {{/previousishidden}}font-weight-600 btn-left">
+                    {{>format_bluegrid/left_arrow}}
+                </a>
+            {{/previous}}
+            {{#next}}
+                <a href="#section-{{next}}" class="btn {{#nextishidden}}btn-outline-default {{/nextishidden}}{{^nextishidden}}btn-outline-primary {{/nextishidden}}font-weight-600 btn-right">
+                    {{>format_bluegrid/right_arrow}}
+                </a>
+            {{/next}}
+            <div class="clearfix"></div>
+        </div>
+    {{/singlesection}}
+    {{#singlesection}}
+        <div class="mt-15">
+            {{{addsection}}}
+        </div>
+    {{/singlesection}}
+</li>
+

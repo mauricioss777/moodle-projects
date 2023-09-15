@@ -1,0 +1,71 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+<ul class="tab-content" style="--brandcolor: {{brandcolor}}">
+    {{>format_bluegrid/tab_overview}}
+    {{^singlesection}}
+        {{>format_bluegrid/tab_content}}
+    {{/singlesection}}
+    {{#sections}}
+        {{>format_bluegrid/tab_section}}
+    {{/sections}}
+</ul>
+
+{{#js}}
+    require(['jquery'], function($){
+        $(document).ready(function() {
+            getHash();
+        })
+        $(window).on('hashchange', function() {
+            getHash();
+        });
+        function getHash() {
+            var hash = window.location.hash.split('#')[1];
+            if(hash == 'section-0') {
+                changeTab('overview')
+            } else if(hash) {
+                changeTab(hash);
+            } else {
+                if ($('.nav-item a[href="#overview"]').length == 1) {
+                    changeTab('overview')
+                } else {
+                    changeTab('content')
+                }
+            }
+        }
+        function changeTab(hash){
+            // Get target tab
+            var tab = $('.tab-pane[id="' + hash + '"]');
+            // Fallback for when is only one section, get the first
+            if(tab.length == 0 && hash == 'content') {
+                tab = $('.tab-pane[id="section-1"]');
+            }
+            if(tab.length){
+                // Hide all tabs
+                $('.course-content .tab-pane').removeClass('active');
+                // Set target tab as active
+                tab.addClass('active');
+            }
+            var link = $('.course-navigation .nav-link[href="#' + hash + '"]');
+            if(link.length){
+                // Remove active from all links
+                $('.course-navigation .nav-link').removeClass('active');
+                // Set current as active
+                link.addClass('active');
+            }
+        }
+    });
+{{/js}}

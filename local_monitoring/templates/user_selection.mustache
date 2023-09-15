@@ -1,0 +1,96 @@
+
+<div>
+    <h2> Informaçôes de usuário </h2>
+    <label> Codigo de usuário  </label>
+    <input type='text' class='form-control' name='codigo' value='' />
+    <br />
+    <select class='form-control' name='estudantes' multiple ></select>
+</div>
+
+<br />
+
+<div>
+    <h2> Provas por categoria </h2>
+    <label> Categoria </label>
+    <input type='text' class='form-control' name='categoria' value='' />
+    <br />
+    <select class='form-control' name='categorias' multiple ></select>
+</div>
+
+<div>
+    <h2> Estudantes sem acesso a categoria </h2>
+    <label> Categoria </label>
+    <input type='text' class='form-control' name='categoria_sem_acesso' value='' />
+    <br />
+    <select class='form-control' name='categorias_sem_acesso' multiple ></select>
+</div>
+
+{{#js}}
+    require(['jquery'], function($){
+
+        var timeout = null;
+
+        $('[name ="codigo"]').on('keyup', function(){
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){ searchRecord('user', {'username' :  $('[name ="codigo"]').val() }, 'estudantes' ); }, 1000)
+        });
+
+        $('[name ="categoria"]').on('keyup', function(){
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){ searchRecord('category', {'category' :  $('[name ="categoria"]').val() }, 'categorias' ); }, 1000)
+        });
+
+        $('[name ="categoria_sem_acesso"]').on('keyup', function(){
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){ searchRecord('category', {'category' :  $('[name ="categoria_sem_acesso"]').val() }, 'categorias_sem_acesso' ); }, 1000)
+        });
+
+        function searchRecord( method, payload, target ){
+            $.ajax({
+                method: 'POST',
+                url: '/virtual/local/monitoring/ajax.php?method='+method,
+                data: payload 
+            })
+            .done( function(data){ buildOption(data, target) } ) 
+            .fail( function(msg){ } );
+        }
+
+        function buildOption(data, target){
+            var html = '';
+            for(var prop in data){
+                html += "<option id='"+data[prop].value+"'>"+data[prop].key+" </option>"
+            }
+            $('[name ="'+target+'"]').html(html) ;
+        }
+
+        $('[name ="estudantes"]').on('click', function(){
+            var user = $(this).find('option:selected').attr('id');
+            if(typeof user != 'undefined'){
+                window.location.href = "/virtual/local/monitoring/index.php?action=user&payload="+user;
+            }
+        });
+
+        $('[name ="categorias"]').on('click', function(){
+            var categories = '';
+            $(this).find('option:selected').each(function(){
+                categories += $(this).attr('id') + '-';
+            });
+
+            if(typeof categories != 'undefined' && categories != ''){
+                window.location.href = "/virtual/local/monitoring/index.php?action=categories&payload="+categories;
+            }
+        });
+
+        $('[name ="categorias_sem_acesso"]').on('click', function(){
+            var categories = '';
+            $(this).find('option:selected').each(function(){
+                categories += $(this).attr('id') + '-';
+            });
+
+            if(typeof categories != 'undefined' && categories != ''){
+                window.location.href = "/virtual/local/monitoring/index.php?action=categories_with_no_access&payload="+categories;
+            }
+        });
+
+    });
+{{/js}}
